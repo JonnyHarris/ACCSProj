@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Event Listening</title>
+<style type="text/css">
+/*        [class*="box"] {
+            background-color: #cca;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+*/
+#inner { width: 400px; height: 100px; background-color: #00f;}
+#outer { width: 400px; background-color: #ff0; padding: 10px; }
+</style>
+
+<script type="text/javascript">
+//<![CDATA[
+function manageEvent(evntObject,event,eventHandler) {
+   evntObject.addEventListener(event,eventHandler,false);
+}
+
+manageEvent(window,"load",
+function ( ) {
+   manageEvent(document.getElementById('inner'),"click",clickHandler);
+   manageEvent(document.getElementById('outer'),"click",clickHandler);
+});
+
+function clickHandler( ) {
+   alert(this.id);
+}
+//]]>
+</script>
+
+</head>
+
+<body>
+<div id="outer" class="box1">
+	Outer
+   <div id="inner" class="box2">
+   	Inner
+   </div>
+</div>
+</body>
+</html>
